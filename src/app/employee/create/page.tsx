@@ -139,21 +139,27 @@ const CreateEmployee = () => {
                   />
                 </div>
               </div>
-              <label htmlFor="state">State</label>
-              <Select
-                options={statesOption}
-                selectedOption={state}
-                setState={setState}
-              />
-              <label htmlFor="zip-code">Zip Code</label>
-              <input
-                id="zip-code"
-                type="number"
-                value={zipCode}
-                onChange={e => setZipCode(e.target.value)}
-              />
+              <div className={styles.inputSection}>
+                <div>
+                  <label>State</label>
+                  <Select
+                    options={statesOption}
+                    selectedOption={state}
+                    setState={setState}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="zip-code">Zip Code</label>
+                  <input
+                    id="zip-code"
+                    type="number"
+                    value={zipCode}
+                    onChange={e => setZipCode(e.target.value)}
+                  />
+                </div>
+              </div>
             </fieldset>
-            <label htmlFor="department">Department</label>
+            <label>Department</label>
             <Select
               options={departments}
               selectedOption={department}
