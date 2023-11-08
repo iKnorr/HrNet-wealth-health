@@ -1,6 +1,8 @@
-import { State } from '@/app/types/employeeType';
+import { Department } from '@/app/types/employeeType';
 
-export const states: State[] = [
+export const departments = Object.values(Department);
+
+export const states = [
   {
     name: 'Alabama',
     abbreviation: 'AL',

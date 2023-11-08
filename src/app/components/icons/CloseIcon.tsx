@@ -5,7 +5,7 @@ export const CloseIcon = () => {
     <svg
       stroke="white"
       fill="white"
-      stroke-width="0"
+      strokeWidth="0"
       viewBox="0 0 1024 1024"
       fillRule="evenodd"
       height="2.5rem"

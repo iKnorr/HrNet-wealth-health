@@ -1,0 +1,16 @@
+.confirmationButton {
+  cursor: pointer;
+  width: 20rem;
+  height: 5rem;
+  background-color: #93ad15;
+  border-radius: 2px;
+  border: none;
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+}
+
+.confirmationButton:hover {
+  background-color: #94ad15;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+}

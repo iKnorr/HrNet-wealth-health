@@ -14,11 +14,11 @@ export const ConfirmationModal = ({
     <>
       <div className={styles.container} onClick={handleClickCloseButton} />
       <div className={styles.textBox}>
+        <CheckIcon />
+        <span>Employee Created!</span>
         <div className={styles.closeButton} onClick={handleClickCloseButton}>
           <CloseIcon />
         </div>
-        <CheckIcon />
-        <p>Employee Created!</p>
       </div>
     </>
   );

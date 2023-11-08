@@ -3,9 +3,11 @@ import Link from 'next/link';
 import './createEmployee.css';
 import { useContext, useEffect, useState } from 'react';
 import { Department, Employee } from '@/app/types/employeeType';
-import { states } from '@/data/statesData';
+import { departments, states } from '@/data/statesData';
 import { EmployeeContext } from '@/context/EmployeeContext';
 import { ConfirmationModal } from '@/app/components/ConfirmationModal/ConfirmationModal';
+import { ConfirmationButton } from '@/app/components/Buttons/ConfirmationButton/ConfirmationButton';
+import { Select } from '@/app/components/Select/Select';
 
 const CreateEmployee = () => {
   const { employeesData, setEmployeesData } = useContext(EmployeeContext);
@@ -13,10 +15,10 @@ const CreateEmployee = () => {
   const [lastName, setLastName] = useState('');
   const [dateOfBirth, setDateOfBirth] = useState('');
   const [startDate, setStartDate] = useState('');
-  const [department, setDepartment] = useState<Department>(Department.SALES);
+  const [department, setDepartment] = useState(departments[0]);
   const [street, setStreet] = useState('');
   const [city, setCity] = useState('');
-  const [state, setState] = useState('');
+  const [state, setState] = useState(states[0].name);
   const [zipCode, setZipCode] = useState('');
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
@@ -46,12 +48,10 @@ const CreateEmployee = () => {
     setDepartment(Department.SALES);
     setStreet('');
     setCity('');
-    setState('');
+    setState(states[0].name);
     setZipCode('');
   };
   console.log('HERE', employeesData);
-
-  const departments = Object.values(Department);
 
   useEffect(() => {
     const handleEscapeKeyPress = (e: KeyboardEvent) => {
@@ -66,6 +66,8 @@ const CreateEmployee = () => {
     };
   }, []);
 
+  const statesOption = states.map(item => item.name);
+
   return (
     <div className="wrapper">
       <div className="content-wrapper">
@@ -75,70 +77,76 @@ const CreateEmployee = () => {
         <div className="container">
           <Link href="/employee/list">View Current Employees</Link>
           <h2>Create Employee</h2>
-          <form action="#" id="create-employee">
-            <label htmlFor="first-name">First Name</label>
-            <input
-              type="text"
-              id="first-name"
-              value={firstName}
-              onChange={(e: any) => setFirstName(e.target.value)}
-            />
-
-            <label htmlFor="last-name">Last Name</label>
-            <input
-              type="text"
-              id="last-name"
-              value={lastName}
-              onChange={(e: any) => setLastName(e.target.value)}
-            />
-
-            <label htmlFor="date-of-birth">Date of Birth</label>
-            <input
-              id="date-of-birth"
-              type="date"
-              value={dateOfBirth}
-              onChange={e => setDateOfBirth(e.target.value)}
-            />
-
-            <label htmlFor="start-date">Start Date</label>
-            <input
-              id="start-date"
-              type="date"
-              value={startDate}
-              onChange={e => setStartDate(e.target.value)}
-            />
-
+          <div className="form-section">
+            <section className="input-section">
+              <div>
+                <label htmlFor="first-name">First Name</label>
+                <input
+                  type="text"
+                  id="first-name"
+                  value={firstName}
+                  onChange={(e: any) => setFirstName(e.target.value)}
+                />
+              </div>
+              <div>
+                <label htmlFor="last-name">Last Name</label>
+                <input
+                  type="text"
+                  id="last-name"
+                  value={lastName}
+                  onChange={(e: any) => setLastName(e.target.value)}
+                />
+              </div>
+            </section>
+            <section className="input-section">
+              <div>
+                <label htmlFor="date-of-birth">Date of Birth</label>
+                <input
+                  id="date-of-birth"
+                  type="date"
+                  value={dateOfBirth}
+                  onChange={e => setDateOfBirth(e.target.value)}
+                />
+              </div>
+              <div>
+                <label htmlFor="start-date">Start Date</label>
+                <input
+                  id="start-date"
+                  type="date"
+                  value={startDate}
+                  onChange={e => setStartDate(e.target.value)}
+                />
+              </div>
+            </section>
             <fieldset className="address">
               <legend>Address</legend>
-
-              <label htmlFor="street">Street</label>
-              <input
-                id="street"
-                type="text"
-                value={street}
-                onChange={e => setStreet(e.target.value)}
-              />
-
-              <label htmlFor="city">City</label>
-              <input
-                id="city"
-                type="text"
-                value={city}
-                onChange={e => setCity(e.target.value)}
-              />
-
+              <div className="input-section">
+                <div>
+                  <label htmlFor="street">Street</label>
+                  <input
+                    id="street"
+                    type="text"
+                    value={street}
+                    onChange={e => setStreet(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="city">City</label>
+                  <input
+                    id="city"
+                    type="text"
+                    value={city}
+                    onChange={e => setCity(e.target.value)}
+                  />
+                </div>
+              </div>
               <label htmlFor="state">State</label>
-              <select
-                name="state"
-                id="state"
-                value={state}
-                onChange={e => setState(e.target.value)}
-              >
-                {states.map((state, index) => (
-                  <option key={`${state}-${index}`}>{state.name}</option>
-                ))}
-              </select>
-
+              <Select
+                options={statesOption}
+                // handleOptionClick={e => setState(e.target)}
+                selectedOption={state}
+                setState={setState}
+              />
               <label htmlFor="zip-code">Zip Code</label>
               <input
                 id="zip-code"
@@ -147,20 +155,14 @@ const CreateEmployee = () => {
                 onChange={e => setZipCode(e.target.value)}
               />
             </fieldset>
-
             <label htmlFor="department">Department</label>
-            <select
-              name="department"
-              id="department"
-              value={department}
-              onChange={e => setDepartment(e.target.value as Department)}
-            >
-              {departments.map((dep, index) => (
-                <option key={`${dep}-${index}`}>{dep}</option>
-              ))}
-            </select>
-          </form>
-          <button onClick={handleSaveEmployee}>Save</button>
+            <Select
+              options={departments}
+              selectedOption={department}
+              setState={setDepartment}
+            />
+          </div>
+          <ConfirmationButton handleSaveEmployee={handleSaveEmployee} />
         </div>
         {showConfirmationModal && (
           <ConfirmationModal
