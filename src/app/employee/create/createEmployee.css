@@ -1,0 +1,50 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  padding: 2rem;
+  border-radius: 3px;
+}
+
+.content-wrapper {
+  width: 40rem;
+  padding: 4rem;
+  border-radius: 3px;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.titleWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 10px;
+  font-size: 1.6rem;
+}
+
+.address {
+  margin-top: 10px;
+  padding: 2rem;
+}
