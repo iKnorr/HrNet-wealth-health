@@ -1,29 +1,22 @@
 .wrapper {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   width: 100%;
   height: 100vh;
 }
-.form-section {
+.formSection {
   width: 100%;
   padding: 1rem 0;
   margin-bottom: 3rem;
 }
 
-.content-wrapper {
+.contentWrapper {
   height: 100%;
   padding: 4rem;
   background-color: white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-}
-
-.titleWrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
 }
 
 .title {
@@ -57,28 +50,28 @@
   color: grey;
 }
 
-input {
+.formSection input {
   width: 20rem;
   padding: 0.5rem 1rem;
   font-size: 1.6rem;
-  text-align: start;
 }
 
-label {
+.formSection label {
   display: block;
   margin-top: 1rem;
-  margin-bottom: 10px;
+  margin-bottom: 0.6rem;
   font-size: 1.6rem;
 }
 
-.input-section {
+.inputSection {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
   width: 100%;
 }
 
 .address {
-  margin-top: 10px;
+  margin: 2rem 0;
   padding: 1rem;
 }

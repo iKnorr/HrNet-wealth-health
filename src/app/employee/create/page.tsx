@@ -1,13 +1,13 @@
 'use client';
 import Link from 'next/link';
-import './createEmployee.css';
 import { useContext, useEffect, useState } from 'react';
 import { Department, Employee } from '@/app/types/employeeType';
-import { departments, states } from '@/data/statesData';
-import { EmployeeContext } from '@/context/EmployeeContext';
+import { EmployeeContext } from '@/app/context/EmployeeContext';
 import { ConfirmationModal } from '@/app/components/ConfirmationModal/ConfirmationModal';
 import { ConfirmationButton } from '@/app/components/Buttons/ConfirmationButton/ConfirmationButton';
 import { Select } from '@/app/components/Select/Select';
+import styles from './createEmployee.module.css';
+import { departments, states } from '@/app/data/statesData';
 
 const CreateEmployee = () => {
   const { employeesData, setEmployeesData } = useContext(EmployeeContext);
@@ -51,7 +51,6 @@ const CreateEmployee = () => {
     setState(states[0].name);
     setZipCode('');
   };
-  console.log('HERE', employeesData);
 
   useEffect(() => {
     const handleEscapeKeyPress = (e: KeyboardEvent) => {
@@ -69,16 +68,16 @@ const CreateEmployee = () => {
   const statesOption = states.map(item => item.name);
 
   return (
-    <div className="wrapper">
-      <div className="content-wrapper">
-        <div className="title">
+    <div className={styles.wrapper}>
+      <div className={styles.contentWrapper}>
+        <div className={styles.title}>
           <h1>HRnet</h1>
         </div>
-        <div className="container">
+        <div className={styles.container}>
           <Link href="/employee/list">View Current Employees</Link>
           <h2>Create Employee</h2>
-          <div className="form-section">
-            <section className="input-section">
+          <div className={styles.formSection}>
+            <section className={styles.inputSection}>
               <div>
                 <label htmlFor="first-name">First Name</label>
                 <input
@@ -98,7 +97,7 @@ const CreateEmployee = () => {
                 />
               </div>
             </section>
-            <section className="input-section">
+            <section className={styles.inputSection}>
               <div>
                 <label htmlFor="date-of-birth">Date of Birth</label>
                 <input
@@ -118,9 +117,9 @@ const CreateEmployee = () => {
                 />
               </div>
             </section>
-            <fieldset className="address">
+            <fieldset className={styles.address}>
               <legend>Address</legend>
-              <div className="input-section">
+              <div className={styles.inputSection}>
                 <div>
                   <label htmlFor="street">Street</label>
                   <input
@@ -143,7 +142,6 @@ const CreateEmployee = () => {
               <label htmlFor="state">State</label>
               <Select
                 options={statesOption}
-                // handleOptionClick={e => setState(e.target)}
                 selectedOption={state}
                 setState={setState}
               />

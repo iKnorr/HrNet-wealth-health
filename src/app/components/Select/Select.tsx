@@ -16,7 +16,7 @@ interface SelectProps {
 
 export const Select = ({ options, setState, selectedOption }: SelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  // const selectRef = useRef(null);
+  const selectRef = useRef<HTMLDivElement>(null);
 
   const handleHeaderClick = () => {
     setIsOpen(prev => !prev);
@@ -27,10 +27,7 @@ export const Select = ({ options, setState, selectedOption }: SelectProps) => {
     setIsOpen(false);
   };
 
-  const selectRef = useRef<HTMLDivElement>(null);
-
   const handleDocumentClick = (e: MouseEvent) => {
-    console.log(selectRef);
     if (selectRef.current && !selectRef.current.contains(e.target as Node)) {
       setIsOpen(false);
     }

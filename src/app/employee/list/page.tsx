@@ -1,5 +1,5 @@
 'use client';
-import { EmployeeContext } from '@/context/EmployeeContext';
+import { EmployeeContext } from '@/app/context/EmployeeContext';
 import React, { useContext } from 'react';
 
 const EmployeeList = () => {
