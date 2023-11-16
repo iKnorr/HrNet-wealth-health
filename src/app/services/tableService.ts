@@ -44,6 +44,6 @@ export const COLUMNS = [
   {
     label: 'Zip Code',
     renderCell: (item: Employee) => item.zipCode,
-    sort: { sortKey: 'ZIP_CODE(item:any)' },
+    sort: { sortKey: 'ZIP_CODE' },
   },
 ];

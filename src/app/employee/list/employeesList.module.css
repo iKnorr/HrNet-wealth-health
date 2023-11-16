@@ -19,9 +19,13 @@
   align-items: center;
 }
 
+.spanStyle {
+  font-size: 1.6rem;
+  word-wrap: unset;
+}
+
 .numberSelect span {
   margin: 0 0.5rem;
-  font-size: 1.6rem;
 }
 
 .tableWrapper {
@@ -55,9 +59,26 @@
   width: 100%;
 }
 
+.prvNext {
+  cursor: pointer;
+  width: 8rem;
+  height: 4rem;
+}
+
+.prvNext:hover {
+  color: grey;
+}
+
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .paginationButton {
   cursor: pointer;
   width: 4rem;
   height: 4rem;
-  margin: 0 0.5rem;
+  margin: 0 0.3rem;
 }
