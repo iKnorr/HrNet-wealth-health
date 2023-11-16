@@ -8,9 +8,11 @@ import { ConfirmationButton } from '@/app/components/Buttons/ConfirmationButton/
 import { Select } from '@/app/components/Select/Select';
 import styles from './createEmployee.module.css';
 import { departments, states } from '@/app/data/statesData';
+import { v4 as uuidv4 } from 'uuid';
 
 const CreateEmployee = () => {
   const { employeesData, setEmployeesData } = useContext(EmployeeContext);
+  const employeeId = uuidv4();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [dateOfBirth, setDateOfBirth] = useState('');
@@ -29,6 +31,7 @@ const CreateEmployee = () => {
   const handleSaveEmployee = (e: any) => {
     e.preventDefault();
     const newEmployee: Employee = {
+      id: employeeId,
       firstName,
       lastName,
       dateOfBirth,

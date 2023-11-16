@@ -1,0 +1,63 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 2rem;
+  height: 100%;
+}
+
+.tablesOptions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.numberSelect {
+  display: flex;
+  align-items: center;
+}
+
+.numberSelect span {
+  margin: 0 0.5rem;
+  font-size: 1.6rem;
+}
+
+.tableWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.listContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  padding: 2rem;
+  width: 90%;
+  height: 90%;
+  gap: 2rem;
+  background-color: white;
+}
+
+.link:hover {
+  text-decoration: underline;
+  color: grey;
+}
+
+.paginationWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.paginationButton {
+  cursor: pointer;
+  width: 4rem;
+  height: 4rem;
+  margin: 0 0.5rem;
+}
