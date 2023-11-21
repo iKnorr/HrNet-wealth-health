@@ -5,10 +5,10 @@ import { Department, Employee } from '@/app/types/employeeType';
 import { EmployeeContext } from '@/app/context/EmployeeContext';
 import { ConfirmationModal } from '@/app/components/ConfirmationModal/ConfirmationModal';
 import { ConfirmationButton } from '@/app/components/Buttons/ConfirmationButton/ConfirmationButton';
-import { Select } from '@/app/components/Select/Select';
 import styles from './createEmployee.module.css';
 import { departments, states } from '@/app/data/statesData';
 import { v4 as uuidv4 } from 'uuid';
+import { Select } from 'ik-select-wealth-health';
 
 const CreateEmployee = () => {
   const { employeesData, setEmployeesData } = useContext(EmployeeContext);

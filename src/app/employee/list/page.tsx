@@ -90,23 +90,24 @@ const EmployeeList = () => {
           <h1>Current Employees</h1>
           <div className={styles.tablesOptions}>
             <div className={styles.numberSelect}>
-              <span>Show</span>
+              <span className={styles.spanStyle}>Show</span>
               <select onChange={e => setTableLines(e.target.value)}>
                 {nrOfTableLines?.map((i, index) => (
                   <option key={`${index}-${i}`}>{i}</option>
                 ))}
               </select>
-              <span>entries</span>
+              <span className={styles.spanStyle}>entries</span>
             </div>
-            <label htmlFor="search">
-              Search :&nbsp;
+            <div>
+              <span className={styles.spanStyle}>Search :&nbsp;</span>
               <input
                 id="search"
+                className={styles.searchInput}
                 type="text"
                 value={search}
                 onChange={handleSearch}
               />
-            </label>
+            </div>
           </div>
           <CompactTable
             columns={COLUMNS}
@@ -151,6 +152,10 @@ const EmployeeList = () => {
                           key={index}
                           type="button"
                           style={{
+                            color:
+                              pagination.state.page === index
+                                ? 'black'
+                                : 'grey',
                             fontWeight:
                               pagination.state.page === index
                                 ? 'bold'

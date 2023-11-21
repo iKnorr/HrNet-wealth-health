@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  margin: 2rem;
+  margin: 0 2rem;
   height: 100%;
 }
 
@@ -42,7 +42,7 @@
   flex-direction: column;
   padding: 2rem;
   width: 90%;
-  height: 90%;
+  height: 100%;
   gap: 2rem;
   background-color: white;
 }
@@ -59,14 +59,21 @@
   width: 100%;
 }
 
+.searchInput {
+  padding: 0.2rem 0.6rem;
+  font-size: 1.6rem;
+}
+
 .prvNext {
   cursor: pointer;
   width: 8rem;
   height: 4rem;
+  font-weight: bold;
 }
 
 .prvNext:hover {
   color: grey;
+  font-weight: unset;
 }
 
 .pagination {
