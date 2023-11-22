@@ -74,11 +74,18 @@ const CreateEmployee = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.contentWrapper}>
+        <div className={styles.linkWrapper}>
+          <Link href="/employee/list">
+            <h3>Home</h3>
+          </Link>
+          <Link href="/employee/list">
+            <h3>View Current Employees</h3>
+          </Link>
+        </div>
         <div className={styles.title}>
           <h1>HRnet</h1>
         </div>
         <div className={styles.container}>
-          <Link href="/employee/list">View Current Employees</Link>
           <h2>Create Employee</h2>
           <div className={styles.formSection}>
             <section className={styles.inputSection}>
