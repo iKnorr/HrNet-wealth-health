@@ -1,5 +1,4 @@
 'use client';
-import Link from 'next/link';
 import { useContext, useEffect, useState } from 'react';
 import { Department, Employee } from '@/app/types/employeeType';
 import { EmployeeContext } from '@/app/context/EmployeeContext';
@@ -10,6 +9,9 @@ import { departments, states } from '@/app/data/statesData';
 import { v4 as uuidv4 } from 'uuid';
 import { Select } from 'ik-select-wealth-health';
 import { Datepicker } from '@/app/components/Datepicker/Datepicker';
+import { InputUserName } from '@/app/components/InputUserName/InputUserName';
+import { InputUserLocation } from '@/app/components/InputEmployeeLocation/InputEmployeeLocation';
+import { LinkSection } from '@/app/components/LinkSection/LinkSection';
 
 const CreateEmployee = () => {
   const { employeesData, setEmployeesData } = useContext(EmployeeContext);
@@ -74,14 +76,7 @@ const CreateEmployee = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.contentWrapper}>
-        <div className={styles.linkWrapper}>
-          <Link href="/employee/list">
-            <h3>Home</h3>
-          </Link>
-          <Link href="/employee/list">
-            <h3>View Current Employees</h3>
-          </Link>
-        </div>
+        <LinkSection />
         <div className={styles.title}>
           <h1>HRnet</h1>
         </div>
@@ -89,24 +84,12 @@ const CreateEmployee = () => {
           <h2>Create Employee</h2>
           <div className={styles.formSection}>
             <section className={styles.inputSection}>
-              <div>
-                <label htmlFor="first-name">First Name</label>
-                <input
-                  type="text"
-                  id="first-name"
-                  value={firstName}
-                  onChange={(e: any) => setFirstName(e.target.value)}
-                />
-              </div>
-              <div>
-                <label htmlFor="last-name">Last Name</label>
-                <input
-                  type="text"
-                  id="last-name"
-                  value={lastName}
-                  onChange={(e: any) => setLastName(e.target.value)}
-                />
-              </div>
+              <InputUserName
+                firstName={firstName}
+                setFirstName={setFirstName}
+                lastName={lastName}
+                setLastName={setLastName}
+              />
             </section>
             <section className={styles.inputSection}>
               <Datepicker
@@ -116,48 +99,17 @@ const CreateEmployee = () => {
                 setDateOfBirth={setDateOfBirth}
               />
             </section>
-            <fieldset className={styles.address}>
-              <legend>Address</legend>
-              <div className={styles.inputSection}>
-                <div>
-                  <label htmlFor="street">Street</label>
-                  <input
-                    id="street"
-                    type="text"
-                    value={street}
-                    onChange={e => setStreet(e.target.value)}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="city">City</label>
-                  <input
-                    id="city"
-                    type="text"
-                    value={city}
-                    onChange={e => setCity(e.target.value)}
-                  />
-                </div>
-              </div>
-              <div className={styles.inputSection}>
-                <div>
-                  <label>State</label>
-                  <Select
-                    options={statesOption}
-                    selectedOption={state}
-                    setState={setState}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="zip-code">Zip Code</label>
-                  <input
-                    id="zip-code"
-                    type="number"
-                    value={zipCode}
-                    onChange={e => setZipCode(e.target.value)}
-                  />
-                </div>
-              </div>
-            </fieldset>
+            <InputUserLocation
+              street={street}
+              setStreet={setStreet}
+              city={city}
+              setCity={setCity}
+              state={state}
+              setState={setState}
+              zipCode={zipCode}
+              setZipCode={setZipCode}
+              statesOption={statesOption}
+            />
             <label>Department</label>
             <Select
               options={departments}

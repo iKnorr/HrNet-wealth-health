@@ -1,0 +1,12 @@
+.linkWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+.linkWrapper h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}

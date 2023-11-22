@@ -11,7 +11,7 @@ import { COLUMNS, tableSearchOptions } from '@/app/services/tableService';
 import Link from 'next/link';
 import { TableOptions } from '@/app/components/TableOptions/TableOptions';
 import { TablePagination } from '@/app/components/TablePagination/TablePagination';
-import { nrOfTableLines } from '@/app/services/EmployeeListService';
+import { nrOfTableLines } from '@/app/services/employeeListService';
 
 const EmployeeList = () => {
   const { employeesData } = useContext(EmployeeContext);
@@ -39,7 +39,7 @@ const EmployeeList = () => {
     state: {
       page: 0,
       // size: tableLines,
-      size: 1, // keep for development to see pagination better
+      size: 1, // keep for development to see pagination easier
     },
     onChange: onPaginationChange,
   });
