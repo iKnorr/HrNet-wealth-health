@@ -9,6 +9,7 @@ import styles from './createEmployee.module.css';
 import { departments, states } from '@/app/data/statesData';
 import { v4 as uuidv4 } from 'uuid';
 import { Select } from 'ik-select-wealth-health';
+import { Datepicker } from '@/app/components/Datepicker/Datepicker';
 
 const CreateEmployee = () => {
   const { employeesData, setEmployeesData } = useContext(EmployeeContext);
@@ -101,24 +102,12 @@ const CreateEmployee = () => {
               </div>
             </section>
             <section className={styles.inputSection}>
-              <div>
-                <label htmlFor="date-of-birth">Date of Birth</label>
-                <input
-                  id="date-of-birth"
-                  type="date"
-                  value={dateOfBirth}
-                  onChange={e => setDateOfBirth(e.target.value)}
-                />
-              </div>
-              <div>
-                <label htmlFor="start-date">Start Date</label>
-                <input
-                  id="start-date"
-                  type="date"
-                  value={startDate}
-                  onChange={e => setStartDate(e.target.value)}
-                />
-              </div>
+              <Datepicker
+                startDate={startDate}
+                setStartDate={setStartDate}
+                dateOfBirth={dateOfBirth}
+                setDateOfBirth={setDateOfBirth}
+              />
             </section>
             <fieldset className={styles.address}>
               <legend>Address</legend>

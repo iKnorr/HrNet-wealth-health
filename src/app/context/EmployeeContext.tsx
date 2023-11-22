@@ -14,7 +14,7 @@ export const EmployeeContext = createContext<EmployeeContextType>({
 
 const EmployeeContextProvider = ({ children }: { children: JSX.Element }) => {
   const [employeesData, setEmployeesData] = useState<Employee[]>([]);
-  console.log('Employee Context', employeesData);
+
   return (
     <EmployeeContext.Provider value={{ employeesData, setEmployeesData }}>
       {children}

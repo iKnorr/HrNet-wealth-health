@@ -1,0 +1,26 @@
+.tablesOptions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.numberSelect {
+  display: flex;
+  align-items: center;
+}
+
+.numberSelect span {
+  margin: 0 0.5rem;
+}
+
+.spanStyle {
+  font-size: 1.6rem;
+  word-wrap: unset;
+}
+
+.searchInput {
+  padding: 0.2rem 0.6rem;
+  font-size: 1.6rem;
+}

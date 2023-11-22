@@ -1,0 +1,37 @@
+.paginationWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.spanStyle {
+  font-size: 1.6rem;
+  word-wrap: unset;
+}
+
+.prvNext {
+  cursor: pointer;
+  width: 8rem;
+  height: 4rem;
+  font-weight: bold;
+}
+
+.prvNext:hover {
+  color: grey;
+  font-weight: unset;
+}
+
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.paginationButton {
+  cursor: pointer;
+  width: 4rem;
+  height: 4rem;
+  margin: 0 0.3rem;
+}

@@ -6,26 +6,9 @@
   height: 100%;
 }
 
-.tablesOptions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  margin: 1rem 0;
-}
-
-.numberSelect {
-  display: flex;
-  align-items: center;
-}
-
 .spanStyle {
   font-size: 1.6rem;
   word-wrap: unset;
-}
-
-.numberSelect span {
-  margin: 0 0.5rem;
 }
 
 .tableWrapper {
@@ -50,42 +33,4 @@
 .link:hover {
   text-decoration: underline;
   color: grey;
-}
-
-.paginationWrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-.searchInput {
-  padding: 0.2rem 0.6rem;
-  font-size: 1.6rem;
-}
-
-.prvNext {
-  cursor: pointer;
-  width: 8rem;
-  height: 4rem;
-  font-weight: bold;
-}
-
-.prvNext:hover {
-  color: grey;
-  font-weight: unset;
-}
-
-.pagination {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.paginationButton {
-  cursor: pointer;
-  width: 4rem;
-  height: 4rem;
-  margin: 0 0.3rem;
 }

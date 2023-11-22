@@ -7,16 +7,17 @@ import { getTheme } from '@table-library/react-table-library/baseline';
 import { useSort } from '@table-library/react-table-library/sort';
 import { usePagination } from '@table-library/react-table-library/pagination';
 import styles from './employeesList.module.css';
-import { COLUMNS } from '@/app/services/tableService';
+import { COLUMNS, tableSearchOptions } from '@/app/services/tableService';
 import { nrOfTableLines } from '@/app/types/listTypes';
 import Link from 'next/link';
+import { TableOptions } from '@/app/components/TableOptions/TableOptions';
+import { TablePagination } from '@/app/components/TablePagination/TablePagination';
 
 const EmployeeList = () => {
   const { employeesData } = useContext(EmployeeContext);
   const theme = useTheme(getTheme());
   const [tableLines, setTableLines] = useState(nrOfTableLines[0]);
   const [search, setSearch] = useState('');
-  const [currentPage, setCurrentPage] = useState<number>();
 
   let data: any = { nodes: employeesData };
 
@@ -26,20 +27,7 @@ const EmployeeList = () => {
       onChange: onSortChange,
     },
     {
-      sortFns: {
-        FIRST_NAME: array =>
-          array.sort((a, b) => a.firstName.localeCompare(b.firstName)),
-        LAST_NAME: array =>
-          array.sort((a, b) => a.lastName.localeCompare(b.lastName)),
-        START_DATE: array => array.sort((a, b) => a.startDate - b.startDate),
-        DEPARTMENT: array =>
-          array.sort((a, b) => a.department.localeCompare(b.department)),
-        DATE_OF_BIRTH: array => array.sort((a, b) => a.startDate - b.deadline),
-        STREET: array => array.sort((a, b) => a.street.localeCompare(b.street)),
-        CITY: array => array.sort((a, b) => a.city.localeCompare(b.city)),
-        STATE: array => array.sort((a, b) => a.state.localeCompare(b.state)),
-        ZIP_CODE: array => array.sort((a, b) => a.zipCode - b.zipCode),
-      },
+      sortFns: tableSearchOptions,
     }
   );
 
@@ -51,7 +39,7 @@ const EmployeeList = () => {
     state: {
       page: 0,
       // size: tableLines,
-      size: 1,
+      size: 1, // keep for development to see pagination better
     },
     onChange: onPaginationChange,
   });
@@ -78,37 +66,17 @@ const EmployeeList = () => {
     }),
   };
 
-  console.log(
-    pagination.state,
-    pagination.state.getTotalPages(data.nodes) - 1 === pagination.state.page
-  );
-
   return (
     <div className={styles.container}>
       <div className={styles.listContainer}>
         <div className={styles.tableWrapper}>
           <h1>Current Employees</h1>
-          <div className={styles.tablesOptions}>
-            <div className={styles.numberSelect}>
-              <span className={styles.spanStyle}>Show</span>
-              <select onChange={e => setTableLines(e.target.value)}>
-                {nrOfTableLines?.map((i, index) => (
-                  <option key={`${index}-${i}`}>{i}</option>
-                ))}
-              </select>
-              <span className={styles.spanStyle}>entries</span>
-            </div>
-            <div>
-              <span className={styles.spanStyle}>Search :&nbsp;</span>
-              <input
-                id="search"
-                className={styles.searchInput}
-                type="text"
-                value={search}
-                onChange={handleSearch}
-              />
-            </div>
-          </div>
+          <TableOptions
+            search={search}
+            handleSearch={handleSearch}
+            nrOfTableLines={nrOfTableLines}
+            setTableLines={setTableLines}
+          />
           <CompactTable
             columns={COLUMNS}
             data={data}
@@ -117,75 +85,7 @@ const EmployeeList = () => {
             sort={sort}
           />
         </div>
-        <div className={styles.paginationWrapper}>
-          <div>
-            <span className={styles.spanStyle}>
-              {`Showing ${!data?.nodes.length ? '0' : '1'} to ${
-                data?.nodes.length
-              } of ${data?.nodes.length} entries`}{' '}
-              {search
-                ? `(filtered from ${employeesData?.length} total entries)`
-                : ''}
-            </span>
-          </div>
-          {pagination.state.getTotalPages(data.nodes) !== 0 && (
-            <div className={styles.pagination}>
-              <button
-                className={styles.prvNext}
-                type="button"
-                disabled={pagination.state.page === 0}
-                onClick={() =>
-                  pagination.fns.onSetPage(pagination.state.page - 1)
-                }
-              >
-                Previous
-              </button>
-              <div>
-                <span>
-                  {pagination.state
-                    .getPages(data.nodes)
-                    .map((_: any, index: number) => {
-                      if (pagination.state.page) console.log(index);
-                      return (
-                        <button
-                          className={styles.paginationButton}
-                          key={index}
-                          type="button"
-                          style={{
-                            color:
-                              pagination.state.page === index
-                                ? 'black'
-                                : 'grey',
-                            fontWeight:
-                              pagination.state.page === index
-                                ? 'bold'
-                                : 'normal',
-                          }}
-                          onClick={() => pagination.fns.onSetPage(index)}
-                        >
-                          {index + 1}
-                        </button>
-                      );
-                    })}
-                </span>
-              </div>
-              <button
-                className={styles.prvNext}
-                type="button"
-                disabled={
-                  pagination.state.getTotalPages(data.nodes) <= 1 ||
-                  pagination.state.getTotalPages(data.nodes) - 1 ===
-                    pagination.state.page
-                }
-                onClick={() =>
-                  pagination.fns.onSetPage(pagination.state.page + 1)
-                }
-              >
-                Next
-              </button>
-            </div>
-          )}
-        </div>
+        <TablePagination data={data} pagination={pagination} search={search} />
         <Link href="/" className={styles.link}>
           <h2>Home</h2>
         </Link>
