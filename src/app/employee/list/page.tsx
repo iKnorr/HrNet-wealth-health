@@ -8,10 +8,10 @@ import { useSort } from '@table-library/react-table-library/sort';
 import { usePagination } from '@table-library/react-table-library/pagination';
 import styles from './employeesList.module.css';
 import { COLUMNS, tableSearchOptions } from '@/app/services/tableService';
-import { nrOfTableLines } from '@/app/types/listTypes';
 import Link from 'next/link';
 import { TableOptions } from '@/app/components/TableOptions/TableOptions';
 import { TablePagination } from '@/app/components/TablePagination/TablePagination';
+import { nrOfTableLines } from '@/app/services/EmployeeListService';
 
 const EmployeeList = () => {
   const { employeesData } = useContext(EmployeeContext);
